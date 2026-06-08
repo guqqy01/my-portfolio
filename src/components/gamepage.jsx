@@ -1,17 +1,15 @@
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import PilgrimsJourney from '../pages/games/the_pilgrims_journey';
 
-function GamePage(){
+const gamePages = {
+    'the-pilgrims-journey': PilgrimsJourney,
+};
+
+function GamePage() {
     const { gameId } = useParams();
-    const game = games.find(g => g.id === gameId);
-    
-    if (!game) {
-        return <div>Game not found</div>;
-    }
+    const Page = gamePages[gameId];
 
-    return (
-        <div className="game-page">
-            <h1>{game.title}</h1>
-            <p>{game.description}</p>
-        </div>
-    );
+    if (!Page) return <div>Game not found</div>;
+
+    return <Page />;
 }
