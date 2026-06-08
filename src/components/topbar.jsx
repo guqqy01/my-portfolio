@@ -9,7 +9,7 @@ function TopbarTab({label, isActive, onClick}){
     );
 }
 
-function Topbar({returnTo, logo = "◆ Dale Gush.dev", tabs, rightBar = "OPEN TO WORK", onSwitchTab, currentTab }) {
+function Topbar({returnTo, logo = "◆ Guqqy.dev", tabs, rightBar = "OPEN TO WORK", onSwitchTab, currentTab }) {
     return (
         <div className="topbar">
             <div className="topbar-left">

@@ -1,58 +1,16 @@
 import { useState } from 'react';
 import GameCard from '../../components/gamecard';
-import LeftSidebar from '../../components/portfolioleftsidebar'; 
+import LeftSidebar from '../../components/leftsidebar'; 
 import { games } from '../../data/games';
+import { portfolioSidebarSections } from '../../data/portfolio-sidebar-sections';
 
 function Portfolio() {
 
     const [activeFilter, setActiveFilter] = useState('all');
-    const sideBarSections = [
-        {   
-            label: 'Scene Explorer', 
-            sidebarTabs:
-            [
-                { 
-                    key: 'all', 
-                    label: 'All Projects',
-                    icon: "◉"
-                },
-            ] 
-        },
-        {   
-            label: 'Filter By Tag', 
-            sidebarTabs:
-            [
-                { 
-                    key: 'unity', 
-                    label: 'Unity',
-                    icon: "◉"
-                },
-                { 
-                    key: 'godot', 
-                    label: 'Godot',
-                    icon: "◉"
-                },
-                { 
-                    key: 'csharp', 
-                    label: 'C#',
-                    icon: "◉"
-                },
-                { 
-                    key: '2d', 
-                    label: '2D',
-                    icon: "◉"
-                },
-                { 
-                    key: '3d', 
-                    label: '3D',
-                    icon: "◉"
-                },
-            ] 
-        },
-    ];
+    
     return (
         <div className="layout2">
-            <LeftSidebar onFilter={setActiveFilter} currentFilter={activeFilter} sideBarSections={sideBarSections} />
+            <LeftSidebar onFilter={setActiveFilter} currentFilter={activeFilter} sideBarSections={portfolioSidebarSections} />
             <div className="view" id="view-portfolio">
                 <div className="hero">
                     <div className="hero-eyebrow">// GAME DEVELOPER — C# — NEW ZEALAND</div>

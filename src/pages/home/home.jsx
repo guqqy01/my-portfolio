@@ -14,7 +14,7 @@ function Home(){
     return (
         <div>
             <Topbar 
-              logo="◆ Dale Gush.dev"
+              logo="◆ Guqqy.dev"
               tabs={tabs}
               rightBar="OPEN TO WORK"
               onSwitchTab={(tab) => { setCurrentTab(tab); }} 

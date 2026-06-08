@@ -13,11 +13,11 @@ function Contact(){
             <div className="section-title">CHANNELS</div>
 
             <div className="contact-grid" style={{ marginBottom: '32px' }}>
-                <a className="contact-item" href="mailto:dgush2324@gmail.com">
+                <a className="contact-item" href="mailto:guqqy.dev@gmail.com">
                     <span className     ="contact-icon">✉</span>
                     <div>
                     <div className="contact-label">EMAIL</div>
-                    <div className="contact-val">dgush2324@gmail.com</div>
+                    <div className="contact-val">guqqy.dev@gmail.com</div>
                     </div>
                 </a>
                 <a className="contact-item" href="https://github.com/Guqqy01" target="_blank">

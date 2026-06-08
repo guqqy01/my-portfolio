@@ -26,13 +26,12 @@ function SidebarSection({ label, sidebarTabs, onFilter, currentFilter })
         </div>
     );
 }
- 
+
 function LeftSidebar({ onFilter, currentFilter, sideBarSections }) {
     return (
         <div className="sidebar">
             {sideBarSections.map((section) => (
                 <SidebarSection
-                    key={section.label}
                     label={section.label}
                     sidebarTabs={section.sidebarTabs}
                     currentFilter={currentFilter}

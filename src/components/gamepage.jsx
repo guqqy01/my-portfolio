@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import PilgrimsJourney from '../pages/games/the_pilgrims_journey';
+import PilgrimsJourney from '../pages/games/the-pilgrims-journey/pages/the_pilgrims_journey';
 
 const gamePages = {
     'the-pilgrims-journey': PilgrimsJourney,
