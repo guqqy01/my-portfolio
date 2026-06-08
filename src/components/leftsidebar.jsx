@@ -1,5 +1,6 @@
+import { useState } from 'react';
 
-function SidebarTab({ label, icon, active, onClick, children, isExpanded, onToggle }) {
+function SidebarTab({ label, icon, active, onClick, children, isExpanded, onToggle, currentFilter }) {
   const hasChildren = children && children.length > 0;
 
   return (
@@ -27,8 +28,9 @@ function SidebarTab({ label, icon, active, onClick, children, isExpanded, onTogg
               key={child.key}
               label={child.label}
               icon={child.icon}
-              active={false} // pass currentFilter === child.key for real selection
+              active={currentFilter === child.key}
               onClick={() => onClick(child.key)}
+              currentFilter={currentFilter}
             />
           ))}
         </div>
