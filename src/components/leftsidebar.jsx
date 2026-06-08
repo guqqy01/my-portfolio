@@ -59,6 +59,7 @@ function SidebarSection({ label, sidebarTabs, onFilter, currentFilter }) {
           children={tab.children}
           isExpanded={!!expanded[tab.key]}
           onToggle={() => toggleExpanded(tab.key)}
+          currentFilter={currentFilter}
         />
       ))}
     </div>
