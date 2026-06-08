@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 function GameCard({ title, genre, description, tags, engine, href }) {
     return (
-        <a className="game-card game-card-link" href={href}>
+        <Link className="game-card game-card-link" to={href}>
             <div className="game-thumb">
                 <div className="thumb-placeholder">
                     <div className="thumb-icon">🎮</div>
@@ -16,7 +18,7 @@ function GameCard({ title, genre, description, tags, engine, href }) {
                     <span key={tag} className="game-tag">{tag}</span>
                 ))}
             </div>
-        </a>
+        </Link>
     );
 }
 

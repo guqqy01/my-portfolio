@@ -22,11 +22,11 @@
   --panel2:  #191c23;   /* slightly lighter panel, used on hover*/
   --border:  #2a2d35;   /* lines separating sections            */
 
-  --accent:  #c8fa64;   /* lime green — primary highlight colour */
-  --accent2: #4af0c4;   /* teal — secondary highlight colour    */
+  --accent:  #1f5ea5;   /* lime green — primary highlight colour */
+  --accent2: #2dbc54;   /* teal — secondary highlight colour    */
 
-  --text:    #e8eaf0;   /* main body text                       */
-  --muted:   #6b7080;   /* dimmed text — labels, subtitles      */
+  --text:    #ffffff;   /* main body text                       */
+  --muted:   #a8aab1;   /* dimmed text — labels, subtitles      */
 
   /* ── FONTS ────────────────────────────────────────────────── */
 

@@ -4,11 +4,12 @@ import PortfolioLeftSidebar from '../../components/portfolioleftsidebar';
 
 function Portfolio() {
 
+    const [currentTab, setCurrentTab] = useState('portfolio');
     const [activeFilter, setActiveFilter] = useState('all');
 
     return (
         <div className="layout2">
-            <PortfolioLeftSidebar onFilter={setActiveFilter} />
+            <PortfolioLeftSidebar onFilter={setActiveFilter} currentFilter={activeFilter} />
             <div className="view" id="view-portfolio">
                 <div className="hero">
                     <div className="hero-eyebrow">// GAME DEVELOPER — C# — NEW ZEALAND</div>
