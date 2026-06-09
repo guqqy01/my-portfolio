@@ -92,15 +92,17 @@
   260px  = right panel (fixed width)
 */
 .layout {
-  display: grid;
-  grid-template-columns: 220px 1fr 260px;
+  display: block;
+  position: relative;
+  padding-left: 220px;
   min-height: calc(100vh - 48px);   /* full height minus the topbar */
 }
 
 .layout2 {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  min-height: calc(100vh - 48px);   /* full height minus the topbar */
+   display: block;
+  position: relative;
+  padding-left: 220px;
+  min-height: calc(100vh - 48px);
 }
 
 /* ── LEFT SIDEBAR ───────────────────────────────────────────── */
@@ -110,9 +112,12 @@
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;   /* stack children vertically */
-  position: sticky;
-  top: 0px;                /* sticks just below the topbar */
-  height: calc(100vh);
+  position: fixed;          /* stick below the topbar */
+  top: 48px;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  /*height: calc(100vh - 48px);*/
   overflow-y: auto;         /* scrollable if content overflows */
 }
 
@@ -164,7 +169,6 @@
   text-align: center;
 }
 
-
 /* ── MAIN CONTENT AREA ──────────────────────────────────────── */
 
 .main {
@@ -183,6 +187,43 @@
 .view.active{
   display: block;
 }
+
+.page-sections {
+  padding-top: 24px;
+}
+
+.page-section {
+  scroll-margin-top: 100px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-section:last-child {
+  border-bottom: none;
+}
+
+.section-header {
+  max-width: 760px;
+}
+
+.section-heading {
+  font-family: var(--display);
+  font-size: 36px;
+  margin: 16px 0 12px;
+  color: var(--text);
+}
+
+.section-copy {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 760px;
+}
+
+.section-children {
+  margin-left: 22px;
+  margin-top: 24px;
+}
+
 /* ── RIGHT INSPECTOR PANEL ──────────────────────────────────── */
 
 .right-panel {
