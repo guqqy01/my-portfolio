@@ -26,14 +26,30 @@ function PilgrimsJourneyPage() {
   const renderSections = (tabs: GamePageSection[]) =>
     tabs.map((tab) => (
       <div key={tab.key}>
-        {tab.content && (
-          <section id={tab.key} className="page-section">
-            <div className="section-header">
-              <div className="hero-eyebrow">{tab.label.toUpperCase()}</div>
-              <h2 className="section-heading">{tab.label}</h2>
+        {tab.header || tab.content || tab.children ?
+          ( <section id= {tab.key}  className= "page-section">
+              {
+                tab.header ? 
+                  tab.header:
+                  (
+                    <div className="section-header">
+                    <div className="hero-eyebrow">// {tab.label.toUpperCase()}</div>
+                    <h2 className="section-heading">{tab.label}</h2>
+                    </div>
+                  )
+              }
+
               <div className="section-copy">{tab.content}</div>
-            </div>
-          </section>
+            </section>) 
+          : 
+          tab.content && (
+            <section id={tab.key} className="page-section">
+              <div className="section-header">
+                <div className="hero-eyebrow">// {tab.label.toUpperCase()}</div>
+                <h2 className="section-heading">{tab.label}</h2>
+                <div className="section-copy">{tab.content}</div>
+              </div>
+            </section>
         )}
 
         {tab.children && <div className="section-children">{renderSections(tab.children)}</div>}
@@ -44,7 +60,7 @@ function PilgrimsJourneyPage() {
     <div>
       <Header
         returnTo={() => window.history.back()}
-        logo="◆ Guqqy.dev"
+        logo="◆ Guqqy.dev      The Pilgrim's Journey"
         tabs={[] as TopbarTab[]}
         rightBar="OPEN TO WORK"
         onSwitchTab={setCurrentTab}
@@ -52,20 +68,8 @@ function PilgrimsJourneyPage() {
       />
 
       <div className="layout2">
-        <Sidebar onFilter={handleSectionSelect} currentFilter={currentTab} gamePageSections={gamePageSections} />
+        <Sidebar onClick={handleSectionSelect} currentTab={currentTab} gamePageSections={gamePageSections} />
         <div className="view" id="view-pilgrims-journey">
-          <div className="hero">
-            <div className="hero-eyebrow">// THE PILGRIM'S JOURNEY</div>
-            <div className="hero-name">THE PILGRIM'S JOURNEY</div>
-            <div className="hero-title">AN ADVENTURE BULLET HELL GAME</div>
-            <div className="hero-bio">
-              The Pilgrim's Journey is a top-down bullet hell adventure game where players explore a mysterious world,
-              uncovering its secrets and battling challenging enemies.
-              With a focus on tight mechanics and expressive visuals,
-              the game offers an immersive experience that stays with players long after they stop playing.
-            </div>
-          </div>
-
           <div className="page-sections">{renderSections(sectionTabs)}</div>
         </div>
       </div>

@@ -43,6 +43,8 @@
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.1em;
+  white-space: normal;
+  white-space-collapse: preserve;
 }
 
 .topbar-tabs {
@@ -169,6 +171,21 @@
   text-align: center;
 }
 
+.sidebar-collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar-collapse-toggle:hover {
+  background: rgba(255,255,255,0.06);
+}
+
 /* ── MAIN CONTENT AREA ──────────────────────────────────────── */
 
 .main {
@@ -219,10 +236,104 @@
   max-width: 760px;
 }
 
+.section-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.section-image-card {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+}
+
+.section-image-button {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.section-image-button img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.section-image-card figcaption {
+  padding: 14px 16px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999;
+}
+
+.image-lightbox-inner {
+  position: relative;
+  width: min(100%, 980px);
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.image-lightbox-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.image-lightbox-caption {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 14px 18px;
+  border-radius: 16px;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .section-children {
   margin-left: 22px;
   margin-top: 24px;
 }
+
 
 /* ── RIGHT INSPECTOR PANEL ──────────────────────────────────── */
 

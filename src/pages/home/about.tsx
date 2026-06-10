@@ -2,7 +2,7 @@ function About(){
     return(
         <div className = "view" id = "view-about">
             <div className="hero">
-                <div className="hero-eyebrow" style={{ marginBottom: '12px' }}>ABOUT.md</div>
+                <div className="hero-eyebrow" style={{ marginBottom: '12px' }}>// ABOUT</div>
                 <div className="hero-name">WHO <span>AM I?</span></div>
                 <div className="hero-title">INDIE DEVELOPER & DESIGNER</div>
                 <div className="hero-bio">

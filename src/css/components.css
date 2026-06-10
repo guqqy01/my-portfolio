@@ -258,6 +258,32 @@
   margin-bottom: 6px;
 }
 
+/* Form feedback (success / error) */
+.form-feedback {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  animation: pop-in 260ms cubic-bezier(.2,.9,.2,1);
+}
+
+.form-feedback.success {
+  color: var(--accent);
+  background: rgba(74,240,196,0.06);
+  border: 1px solid rgba(74,240,196,0.12);
+}
+
+.form-feedback.error {
+  color: #ff7b7b;
+  background: rgba(255,100,100,0.06);
+  border: 1px solid rgba(255,100,100,0.12);
+}
+
+@keyframes pop-in {
+  from { transform: scale(.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
 .form-input {
   width: 100%;
   background: var(--panel);

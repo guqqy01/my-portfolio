@@ -11,8 +11,8 @@ function Portfolio() {
   return (
     <div className="layout2">
       <Sidebar
-        onFilter={setActiveFilter}
-        currentFilter={activeFilter}
+        onClick={setActiveFilter}
+        currentTab={activeFilter}
         sideBarSections={portfolioSidebarSections}
       />
       <div className="view" id="view-portfolio">

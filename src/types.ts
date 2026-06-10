@@ -10,6 +10,7 @@ export type GamePageSection = {
   label: string;
   icon?: string;
   children?: GamePageSection[];
+  header?: ReactNode;
   content?: ReactNode;
 };
 

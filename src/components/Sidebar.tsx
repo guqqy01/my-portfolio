@@ -10,23 +10,23 @@ type SidebarTabProps = {
   label: string;
   icon?: string;
   active: boolean;
-  onFilter: (key: string) => void;
+  onClick: (key: string) => void;
   children?: SidebarTabType[];
   isExpanded: boolean;
   onToggle?: () => void;
-  currentFilter: string;
+  currentTab: string;
 };
 
 type SidebarSectionProps = {
   label: string;
   sidebarTabs: SidebarTabType[];
-  onFilter: (key: string) => void;
-  currentFilter: string;
+  onClick: (key: string) => void;
+  currentTab: string;
 };
 
 type SidebarProps = {
-  onFilter: (key: string) => void;
-  currentFilter: string;
+  onClick: (key: string) => void;
+  currentTab: string;
   sideBarSections?: SidebarSection[];
   gamePageSections?: GamePageSidebarSection[];
 };
@@ -46,7 +46,7 @@ const createSidebarTabs = (sections: GamePageSidebarSection[]): SidebarSection[]
     }),
   }));
 
-function SidebarTab({ tabKey, label, icon, active, onFilter, children, isExpanded, onToggle, currentFilter }: SidebarTabProps) {
+function SidebarTab({ tabKey, label, icon, active, onClick, children, isExpanded, onToggle, currentTab }: SidebarTabProps) {
   const hasChildren = children?.length > 0;
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
@@ -55,7 +55,7 @@ function SidebarTab({ tabKey, label, icon, active, onFilter, children, isExpande
   };
 
   const handleTabClick = () => {
-    onFilter(tabKey);
+    onClick(tabKey);
     if (hasChildren && !isExpanded) {
       onToggle?.();
     }
@@ -79,7 +79,8 @@ function SidebarTab({ tabKey, label, icon, active, onFilter, children, isExpande
         </span>
         {hasChildren && (
           <span
-            style={{ fontSize: '9px', opacity: 0.5, cursor: 'pointer' }}
+            className="sidebar-collapse-toggle"
+            style={{ fontSize: '9px', opacity: 0.5 }}
             onClick={handleArrowClick}
           >
             {isExpanded ? '▼' : '▶'}
@@ -94,12 +95,12 @@ function SidebarTab({ tabKey, label, icon, active, onFilter, children, isExpande
               tabKey: child.key,
               label: child.label,
               icon: child.icon,
-              active: currentFilter === child.key,
-              onFilter,
+              active: currentTab === child.key,
+              onClick: onClick,
               children: child.children,
               isExpanded: !!expanded[child.key],
               onToggle: () => toggleExpanded(child.key),
-              currentFilter,
+              currentTab: currentTab,
             };
 
             return <SidebarTab key={child.key} {...childProps} />;
@@ -110,7 +111,7 @@ function SidebarTab({ tabKey, label, icon, active, onFilter, children, isExpande
   );
 }
 
-function SidebarSection({ label, sidebarTabs, onFilter, currentFilter }: SidebarSectionProps) {
+function SidebarSection({ label, sidebarTabs, onClick, currentTab }: SidebarSectionProps) {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const toggleExpanded = (key: string) => {
@@ -125,12 +126,12 @@ function SidebarSection({ label, sidebarTabs, onFilter, currentFilter }: Sidebar
           tabKey: tab.key,
           label: tab.label,
           icon: tab.icon,
-          active: currentFilter === tab.key,
-          onFilter,
+          active: currentTab === tab.key,
+          onClick: onClick,
           children: tab.children,
           isExpanded: !!expanded[tab.key],
           onToggle: () => toggleExpanded(tab.key),
-          currentFilter,
+          currentTab: currentTab,
         };
 
         return <SidebarTab key={tab.key} {...tabProps} />;
@@ -139,7 +140,7 @@ function SidebarSection({ label, sidebarTabs, onFilter, currentFilter }: Sidebar
   );
 }
 
-function Sidebar({ onFilter, currentFilter, sideBarSections, gamePageSections }: SidebarProps) {
+function Sidebar({ onClick, currentTab, sideBarSections, gamePageSections }: SidebarProps) {
   const resolvedSections = gamePageSections ? createSidebarTabs(gamePageSections) : sideBarSections ?? [];
 
   return (
@@ -149,8 +150,8 @@ function Sidebar({ onFilter, currentFilter, sideBarSections, gamePageSections }:
           key={section.label}
           label={section.label}
           sidebarTabs={section.sidebarTabs}
-          currentFilter={currentFilter}
-          onFilter={onFilter}
+          currentTab={currentTab}
+          onClick={onClick}
         />
       ))}
     </div>
