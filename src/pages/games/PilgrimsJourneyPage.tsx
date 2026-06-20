@@ -4,11 +4,8 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import { gamePageSections } from './pilgrimsJourneyNavigation';
 
-const flattenPageSections = (tabs: GamePageSection[]): GamePageSection[] =>
-  tabs.flatMap((tab) => [tab, ...(tab.children ? flattenPageSections(tab.children) : [])]);
-
 const collectSectionTabs = (sections: GamePageSidebarSection[]) =>
-  sections.flatMap((section) => flattenPageSections(section.sections));
+  sections.flatMap((section) => section.sections);
 
 function PilgrimsJourneyPage() {
   const sectionTabs = useMemo(() => collectSectionTabs(gamePageSections), []);
@@ -24,37 +21,27 @@ function PilgrimsJourneyPage() {
   };
 
   const renderSections = (tabs: GamePageSection[]) =>
-    tabs.map((tab) => (
-      <div key={tab.key}>
-        {tab.header || tab.content || tab.children ?
-          ( <section id= {tab.key}  className= "page-section">
-              {
-                tab.header ? 
-                  tab.header:
-                  (
-                    <div className="section-header">
-                    <div className="hero-eyebrow">// {tab.label.toUpperCase()}</div>
-                    <h2 className="section-heading">{tab.label}</h2>
-                    </div>
-                  )
-              }
+  tabs.map((tab) => (
+    <div key={tab.key}>
+      {(tab.header || tab.content || tab.children) && (
+        <section id={tab.key} className="page-section">
+          {tab.header ? (
+            tab.header
+          ) : (
+            <div className="section-header">
+              <div className="hero-eyebrow">// {tab.label.toUpperCase()}</div>
+              <h2 className="section-heading">{tab.label}</h2>
+            </div>
+          )}
+          <div className="section-copy">{tab.content}</div>
+        </section>
+      )}
 
-              <div className="section-copy">{tab.content}</div>
-            </section>) 
-          : 
-          tab.content && (
-            <section id={tab.key} className="page-section">
-              <div className="section-header">
-                <div className="hero-eyebrow">// {tab.label.toUpperCase()}</div>
-                <h2 className="section-heading">{tab.label}</h2>
-                <div className="section-copy">{tab.content}</div>
-              </div>
-            </section>
-        )}
-
-        {tab.children && <div className="section-children">{renderSections(tab.children)}</div>}
-      </div>
-    ));
+      {tab.children && (
+        <div className="section-children">{renderSections(tab.children)}</div>
+      )}
+    </div>
+  ));
 
   return (
     <div>
