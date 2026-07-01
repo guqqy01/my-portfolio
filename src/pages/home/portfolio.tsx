@@ -36,6 +36,8 @@ function Portfolio() {
           </div>
         </div>
 
+        
+
         <div className="stat-grid">
           <div className="stat"><div className="stat-val">{games.length}</div><div className="stat-label">PROJECTS</div></div>
           <div className="stat"><div className="stat-val">0</div><div className="stat-label">GAME JAMS</div></div>

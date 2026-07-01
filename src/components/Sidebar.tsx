@@ -48,7 +48,7 @@ const createSidebarTabs = (section: GamePageSidebarSection): SidebarSection[] =>
 ];
 
 function SidebarTab({ tabKey, label, icon, active, onClick, children, isExpanded, onToggle, currentTab }: SidebarTabProps) {
-  const hasChildren = children?.length > 0;
+  const hasChildren = children && children.length > 0;
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const toggleExpanded = (key: string) => {
